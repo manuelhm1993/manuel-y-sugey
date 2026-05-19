@@ -934,6 +934,79 @@ footer a {
   font-size: 1.2rem; color: #7a5c3a;
 }
 
+/* ANIVERSARIO */
+#aniversario-overlay {
+  position: fixed; inset: 0; z-index: 2100;
+  background: var(--bg);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 24px; text-align: center; padding: 40px;
+  transition: opacity .8s ease;
+}
+#aniversario-overlay.hide { opacity: 0; pointer-events: none; }
+
+#aniversario-title {
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  font-weight: 300; line-height: 1.1; color: var(--cream);
+}
+#aniversario-title em { font-style: italic; color: var(--gold2); }
+
+#aniversario-years {
+  font-family: var(--serif);
+  font-size: clamp(5rem, 14vw, 10rem);
+  font-weight: 300; line-height: 1;
+  color: var(--gold2);
+  opacity: .15;
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
+
+#aniversario-sub {
+  font-size: 13px; font-weight: 300;
+  color: var(--muted); letter-spacing: .08em;
+  line-height: 1.8; max-width: 360px;
+}
+
+#aniversario-btn {
+  margin-top: 8px; padding: 14px 40px;
+  border-radius: 999px;
+  border: 0.5px solid var(--gold);
+  background: rgba(201,168,108,.1);
+  color: var(--gold2); font-family: var(--serif);
+  font-size: 1.2rem; font-style: italic;
+  cursor: pointer; position: relative;
+  transition: background .3s, transform .2s;
+  letter-spacing: .04em;
+}
+#aniversario-btn:hover { background: rgba(201,168,108,.2); transform: scale(1.04); }
+#aniversario-btn::before {
+  content: ''; position: absolute; inset: 0;
+  border-radius: 999px; border: 1px solid var(--gold);
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+#aniversario-fecha {
+  font-size: 10px; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--gold);
+  opacity: .7;
+}
+
+/* CONFETI */
+.confeti-piece {
+  position: fixed; top: -10px;
+  width: 8px; height: 8px;
+  border-radius: 2px;
+  opacity: 0;
+  animation: caer linear forwards;
+  z-index: 2099; pointer-events: none;
+}
+@keyframes caer {
+  0%   { transform: translateY(0)    rotate(0deg);   opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
 @media(max-width:640px){
     .tl-spine {
         left: 20px;
