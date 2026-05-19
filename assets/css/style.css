@@ -777,25 +777,58 @@ footer a {
     .tl-spine {
         left: 20px;
     }
+
     .tl-item {
-        grid-template-columns: 40px 1fr;
+        display: flex;
+        grid-template-columns: none;
+        align-items: flex-start;
+        gap: 16px;
         margin-bottom: 36px;
     }
+
+    /* Forzar orden: dot primero, card después, sin importar par/impar */
     .tl-item:nth-child(odd) .tl-left,
-    .tl-item:nth-child(even) .tl-left {
-        display: none;
-        order: 3;
+    .tl-item:nth-child(even) .tl-left,
+    .tl-item:nth-child(odd) .tl-right,
+    .tl-item:nth-child(even) .tl-right {
+        order: initial;
+        padding: 0;
     }
+
+    /* Ocultar todos los empty placeholders */
+    .tl-item .tl-left:empty,
+    .tl-item .tl-right:empty,
+    .tl-empty {
+        display: none !important;
+    }
+
+    /* Card siempre del lado derecho del dot */
+    .tl-item .tl-left,
+    .tl-item .tl-right {
+        flex: 1;
+        padding: 0;
+    }
+
+    /* Dot fijo a la izquierda */
+    .tl-item .tl-center {
+        flex: 0 0 40px;
+        padding-top: 20px;
+    }
+
+    /* Forzar orden visual: dot, card */
     .tl-item:nth-child(odd) .tl-center,
     .tl-item:nth-child(even) .tl-center {
         order: 1;
     }
-    .tl-item:nth-child(odd) .tl-right,
+    .tl-item:nth-child(odd) .tl-left,
     .tl-item:nth-child(even) .tl-right {
         order: 2;
-        padding-left: 16px;
-        padding-right: 0;
     }
+    .tl-item:nth-child(even) .tl-left,
+    .tl-item:nth-child(odd) .tl-right {
+        order: 3;
+    }
+
     .feelings-grid,
     .opp-grid {
         grid-template-columns: 1fr;
