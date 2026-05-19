@@ -19,16 +19,6 @@ completamente opuestos y completamente hechos el uno para el otro.
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)
 
-## Estructura
-
-manuel-y-sugey/
-├── index.html
-├── assets/
-│   ├── css/style.css
-│   ├── js/app.js
-│   └── music/perfect.mp3
-└── README.md
-
 ## Features
 
 - Línea de tiempo narrativa · 2011 → 2026
