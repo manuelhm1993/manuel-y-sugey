@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Manuel & Sugey — Nuestra Historia</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#0f1020;
+    --card:#17182d;
+    --primary:#a855f7;
+    --secondary:#ec4899;
+    --text:#f5f5f5;
+    --soft:#b8b8c9;
+    --line:rgba(255,255,255,.15);
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:
+    radial-gradient(circle at top right, rgba(168,85,247,.18), transparent 25%),
+    radial-gradient(circle at bottom left, rgba(236,72,153,.15), transparent 25%),
+    var(--bg);
+
+    color:var(--text);
+    overflow-x:hidden;
+    min-height:100vh;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 20px;
+    position:relative;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    filter:blur(140px);
+    opacity:.2;
+    z-index:0;
+}
+
+.hero-content{
+    position:relative;
+    z-index:1;
+    max-width:900px;
+}
+
+.badge{
+    display:inline-block;
+    padding:10px 20px;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:999px;
+    background:rgba(255,255,255,.04);
+    margin-bottom:25px;
+    color:#ddd;
+    backdrop-filter:blur(10px);
+}
+
+.hero h1{
+    font-size:clamp(3rem,7vw,6rem);
+    line-height:1;
+    margin-bottom:20px;
+    background:linear-gradient(to right,#fff,#d8b4fe,#f9a8d4);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    color:var(--soft);
+    font-size:1.1rem;
+    line-height:1.8;
+    max-width:750px;
+    margin:auto;
+}
+
+.scroll{
+    margin-top:50px;
+    color:#aaa;
+    animation:float 2s infinite ease-in-out;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(10px);}
+}
+
+/* TIMELINE */
+
+.timeline-section{
+    width:min(1100px,90%);
+    margin:auto;
+    padding:80px 0 120px;
+    position:relative;
+}
+
+.timeline-line{
+    position:absolute;
+    left:50%;
+    top:0;
+    transform:translateX(-50%);
+    width:4px;
+    height:100%;
+    background:linear-gradient(to bottom,var(--primary),var(--secondary));
+    border-radius:999px;
+    opacity:.35;
+}
+
+.timeline-item{
+    position:relative;
+    width:50%;
+    padding:30px;
+    margin-bottom:60px;
+}
+
+.timeline-item:nth-child(odd){
+    left:0;
+    text-align:right;
+}
+
+.timeline-item:nth-child(even){
+    left:50%;
+}
+
+.timeline-card{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(18px);
+    border-radius:24px;
+    padding:28px;
+    transition:.4s ease;
+    position:relative;
+}
+
+.timeline-card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(255,255,255,.18);
+}
+
+.timeline-dot{
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    position:absolute;
+    top:40px;
+    z-index:2;
+    box-shadow:0 0 25px rgba(168,85,247,.7);
+}
+
+.timeline-item:nth-child(odd) .timeline-dot{
+    right:-11px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot{
+    left:-11px;
+}
+
+.timeline-date{
+    color:#d8b4fe;
+    font-size:.9rem;
+    margin-bottom:10px;
+    font-weight:600;
+    letter-spacing:1px;
+}
+
+.timeline-card h2{
+    margin-bottom:15px;
+    font-size:1.5rem;
+}
+
+.timeline-card p{
+    color:var(--soft);
+    line-height:1.8;
+}
+
+/* FINAL */
+
+.final{
+    width:min(900px,90%);
+    margin:0 auto 120px;
+    text-align:center;
+}
+
+.final-card{
+    background:linear-gradient(135deg,
+    rgba(168,85,247,.12),
+    rgba(236,72,153,.12));
+
+    border:1px solid rgba(255,255,255,.08);
+    padding:60px 40px;
+    border-radius:30px;
+    position:relative;
+    overflow:hidden;
+}
+
+.final-card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(circle at top right, rgba(255,255,255,.08), transparent 30%);
+    pointer-events:none;
+}
+
+.final h2{
+    font-size:clamp(2rem,5vw,3.5rem);
+    margin-bottom:25px;
+}
+
+.final p{
+    line-height:2;
+    color:#d7d7e5;
+    font-size:1.05rem;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .timeline-line{
+        left:20px;
+    }
+
+    .timeline-item{
+        width:100%;
+        left:0 !important;
+        text-align:left !important;
+        padding-left:60px;
+    }
+
+    .timeline-dot{
+        left:9px !important;
+        right:auto !important;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            ✨ Manuel & Sugey — Una historia construida entre transiciones
+        </div>
+
+        <h1>
+            El puente que sí llegó a construirse
+        </h1>
+
+        <p>
+            Algunas historias comienzan mucho antes de tener nombre.
+            Entre sueños, incertidumbre, despedidas, reconciliaciones y esperanza,
+            dos personas fueron encontrándose poco a poco hasta convertirse en hogar.
+        </p>
+
+        <div class="scroll">
+            ↓ Desliza para recorrer la historia ↓
+        </div>
+
+    </div>
+
+</section>
+
+<section class="timeline-section">
+
+    <div class="timeline-line"></div>
+
+    <!-- ITEM -->
+
+    <div class="timeline-item">
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-card">
+
+            <div class="timeline-date">
+                🌙 El primer encuentro
+            </div>
+
+            <h2>
+                Cuando algo empezó a cambiar
+            </h2>
+
+            <p>
+                Lo que parecía una conexión sencilla comenzó a convertirse en algo más profundo.
+                Aún no había certezas, ni títulos, ni promesas...
+                pero emocionalmente, ambos empezaban a reconocerse.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ITEM -->
+
+    <div class="timeline-item">
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-card">
+
+            <div class="timeline-date">
+                🌉 La transición
+            </div>
+
+            <h2>
+                El puente más difícil
+            </h2>
+
+            <p>
+                Manuel aún estaba cerrando una etapa importante de su vida.
+                No quería comenzar algo nuevo sin antes resolver lo anterior con responsabilidad.
+                Eso causó dolor, dudas y casi los separa...
+                pero también mostró que las decisiones se estaban tomando con verdad.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ITEM -->
+
+    <div class="timeline-item">
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-card">
+
+            <div class="timeline-date">
+                🌧️ Los meses difíciles
+            </div>
+
+            <h2>
+                Insomnio, presión y miedo
+            </h2>
+
+            <p>
+                Llegaron días complicados:
+                desempleo, deudas, ansiedad y una sensación constante de cansancio.
+                Manuel cargaba demasiado solo,
+                mientras Sugey intentaba sostener el vínculo desde el cariño.
+                Aun así, ninguno dejó de elegir al otro.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ITEM -->
+
+    <div class="timeline-item">
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-card">
+
+            <div class="timeline-date">
+                ☀️ El día de la reconciliación
+            </div>
+
+            <h2>
+                La entrevista que cambió todo
+            </h2>
+
+            <p>
+                Después de una de las entrevistas más importantes,
+                algo también cambió emocionalmente.
+                Hablaron, se reencontraron y decidieron seguir construyendo juntos.
+                Desde ese momento, la historia tomó una dirección más clara.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ITEM -->
+
+    <div class="timeline-item">
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-card">
+
+            <div class="timeline-date">
+                💜 20 de marzo
+            </div>
+
+            <h2>
+                El inicio oficial
+            </h2>
+
+            <p>
+                Lo que llevaba mucho tiempo creciendo finalmente recibió un nombre:
+                novios.
+                No fue el inicio del amor...
+                fue el momento donde ambos decidieron reconocerlo oficialmente.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ITEM -->
+
+    <div class="timeline-item">
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-card">
+
+            <div class="timeline-date">
+                🏡 Integrarse a la familia
+            </div>
+
+            <h2>
+                Ya no solo era una historia privada
+            </h2>
+
+            <p>
+                Manuel presentó a Sugey primero a su padre
+                y luego oficialmente con toda la familia el Día de las Madres.
+                Poco a poco, la relación comenzó a sentirse como hogar,
+                no solo como refugio emocional.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ITEM -->
+
+    <div class="timeline-item">
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-card">
+
+            <div class="timeline-date">
+                ✨ Hoy
+            </div>
+
+            <h2>
+                El puente sí se construyó
+            </h2>
+
+            <p>
+                Hubo miedo.
+                Hubo dudas.
+                Hubo noches difíciles.
+                Pero también hubo paciencia, honestidad y amor real.
+                Y aunque la historia aún sigue escribiéndose,
+                ahora ambos saben algo importante:
+                ya no están caminando solos.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="final">
+
+    <div class="final-card">
+
+        <h2>
+            “Algunas historias no comienzan cuando se hacen oficiales...
+            comienzan cuando dos personas empiezan a convertirse en paz para el otro.”
+        </h2>
+
+        <p>
+            — Manuel & Sugey —
+            <br><br>
+            Celebrando un año desde el primer encuentro.
+        </p>
+
+    </div>
+
+</section>
+
+<script>
+
+const cards = document.querySelectorAll('.timeline-card');
+
+const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.animate([
+                {
+                    opacity:0,
+                    transform:'translateY(40px)'
+                },
+                {
+                    opacity:1,
+                    transform:'translateY(0)'
+                }
+            ],{
+                duration:800,
+                easing:'ease',
+                fill:'forwards'
+            });
+
+        }
+
+    });
+
+},{
+    threshold:0.2
+});
+
+cards.forEach(card => {
+
+    card.style.opacity = 0;
+    observer.observe(card);
+
+});
+
+</script>
+
+</body>
+</html>
