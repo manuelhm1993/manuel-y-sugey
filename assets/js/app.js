@@ -113,3 +113,15 @@ window.addEventListener("load", () => {
             /* El navegador bloqueó el autoplay, el usuario da click manual */
         });
 });
+
+/* CARTA */
+function toggleCarta() {
+  document.getElementById('carta-overlay').classList.toggle('visible');
+  document.body.style.overflow =
+    document.getElementById('carta-overlay').classList.contains('visible')
+    ? 'hidden' : '';
+}
+
+function cerrarCarta(e) {
+  if (e.target === document.getElementById('carta-overlay')) toggleCarta();
+}

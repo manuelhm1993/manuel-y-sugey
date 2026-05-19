@@ -11,7 +11,11 @@
             property="og:description"
             content="Un Leo y una Sagitario. Un programador y una repostera. Completamente opuestos. Completamente hechos el uno para el otro."
         />
-        <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧵</text></svg>">
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧵</text></svg>"
+        />
         <title>Manuel & Sugey</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -19,7 +23,7 @@
             rel="stylesheet"
         />
 
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/style.css" />
     </head>
     <body>
         <div id="welcome">
@@ -32,6 +36,107 @@
                 Comenzar
             </button>
         </div>
+
+        <!-- BOTÓN CARTA -->
+        <button id="carta-btn" onclick="toggleCarta()">✉ Leer la carta</button>
+
+        <!-- OVERLAY CARTA -->
+        <div id="carta-overlay" onclick="cerrarCarta(event)">
+            <div id="carta-paper">
+                <button id="carta-close" onclick="toggleCarta()">✕</button>
+
+                <p class="carta-fecha">Maracaibo, 2026</p>
+
+                <div class="carta-body">
+                    <p><strong>Sugey,</strong></p>
+                    <p>
+                        No sé exactamente cuándo empezó todo esto. Y creo que
+                        eso es lo más honesto que puedo decirte.
+                    </p>
+                    <p>
+                        Te conocí cuando eras una niña con demasiada luz para un
+                        solo cuarto. Yo tenía 17 años y ni siquiera sabía que
+                        ese momento iba a importar. No había forma de saberlo.
+                        Solo había una iglesia, una tarde, y algo en ti que
+                        quedó grabado sin pedir permiso.
+                    </p>
+                    <p>
+                        Pasaron doce años. La vida nos llevó por caminos
+                        distintos — yo construyendo, fallando, aprendiendo,
+                        cargando cosas que no siempre supe soltar. Tú creciendo,
+                        convirtiéndote en quien eres hoy. Ninguno buscó al otro.
+                        Y aun así, aquí estamos.
+                    </p>
+                    <p>
+                        Cuando reapareciste en 2023 el impacto fue silencioso
+                        pero real. La niña de la iglesia ya no era una niña.
+                        Había algo en la forma en que hablabas, en cómo
+                        pensabas, que lo cambió todo. Nuestras conversaciones
+                        subieron de tono — demasiado, demasiado rápido — y tú
+                        decidiste alejarte. La iglesia, las formas, el peso de
+                        lo que estaba naciendo. Te entiendo. A veces lo que más
+                        nos asusta es exactamente lo que más queremos.
+                    </p>
+                    <p>Pero en enero de 2025 me desbloqueaste.</p>
+                    <p>
+                        Y yo, siendo completamente honesto, solo pude pensar una
+                        cosa:
+                    </p>
+                    <p>
+                        <em
+                            >"No pudiste vivir con tu fracaso. ¿Eso a dónde te
+                            llevó? De vuelta a mí."</em
+                        >
+                    </p>
+                    <p>Bienvenida de nuevo.</p>
+                    <p>
+                        El 27 de mayo supe con certeza lo que ya intuía: que
+                        esto era verdad. Que no era confusión ni nostalgia ni
+                        nada que se pudiera explicar fácilmente. Eras tú. Eras
+                        tú desde hace mucho más tiempo del que me atrevía a
+                        admitir.
+                    </p>
+                    <p>
+                        Somos completamente opuestos, Sugey. Yo vivo entre
+                        código y Bocelli a todo volumen. Tú en lo urbano, en lo
+                        cotidiano, creando cosas con las manos que yo nunca
+                        podría. Yo intenso y pasional hasta el cansancio. Tú
+                        reservada, profunda, diciendo exactamente lo necesario
+                        en el momento justo. Leo y Sagitario — fuego de dos
+                        formas distintas.
+                    </p>
+                    <p>Y aun así, o quizás por eso, encajamos.</p>
+                    <p>
+                        Hay algo que me mueve profundamente: que estés
+                        aprendiendo diseño. No porque lo necesites — sino porque
+                        quisiste tener más en común conmigo. Eso no es
+                        adaptación. Eso es amor en acción. Y yo lo veo, aunque
+                        no siempre lo diga en voz alta.
+                    </p>
+                    <p>
+                        Sé que no he sido fácil. Que hubo momentos en que cargué
+                        demasiado solo y no te dejé entrar del todo. Que el
+                        trabajo y los proyectos se llevan más de mí de lo que a
+                        veces quisiera. Pero cada uno de esos 25 kilómetros que
+                        nos separaban, siempre los manejé yo. Porque tú vales
+                        cada kilómetro. Cada vez.
+                    </p>
+                    <p>Ninguno de los dos se fue. Y eso lo dice todo.</p>
+                    <p>
+                        El 20 de marzo de 2026 te lo dije oficialmente. Pero la
+                        verdad es que ya era tuyo mucho antes — desde octubre,
+                        desde mayo, desde enero, desde 2023, desde una iglesia
+                        en Maracaibo hace quince años.
+                    </p>
+                    <p>Gracias por desbloquearme. En todos los sentidos.</p>
+                    <div class="carta-firma">
+                        <p><em>Con todo,</em></p>
+                        <p><strong>Manuel</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="progress"></div>
 
         <!-- MUSIC -->
