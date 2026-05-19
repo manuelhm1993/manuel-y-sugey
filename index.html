@@ -1,551 +1,622 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Manuel & Sugey — Nuestra Historia</title>
-
+<meta property="og:title" content="Manuel & Sugey — Una historia de 15 años"/>
+<meta property="og:description" content="Un Leo y una Sagitario. Un programador y una repostera. Completamente opuestos. Completamente hechos el uno para el otro."/>
+<title>Manuel & Sugey</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+:root {
+  --bg:      #0c0b0f;
+  --surface: #14121a;
+  --card:    #1b1826;
+  --border:  rgba(255,255,255,.07);
+  --border2: rgba(255,255,255,.13);
+  --gold:    #c9a86c;
+  --gold2:   #e8c98a;
+  --rose:    #c4798a;
+  --rose2:   #e8a0b0;
+  --violet:  #8b7bb5;
+  --violet2: #b8a8e0;
+  --cream:   #f5ede0;
+  --text:    #ede8df;
+  --muted:   #9a9088;
+  --serif:   'Cormorant Garamond', Georgia, serif;
+  --sans:    'DM Sans', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--bg); color: var(--text); overflow-x: hidden; }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 1000; opacity: .5;
 }
 
-:root{
-    --bg:#0f1020;
-    --card:#17182d;
-    --primary:#a855f7;
-    --secondary:#ec4899;
-    --text:#f5f5f5;
-    --soft:#b8b8c9;
-    --line:rgba(255,255,255,.15);
-}
+/* PROGRESS */
+#progress { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg,var(--gold),var(--rose)); width: 0%; z-index: 999; transition: width .1s linear; }
 
-body{
-    font-family:'Poppins',sans-serif;
-    background:
-    radial-gradient(circle at top right, rgba(168,85,247,.18), transparent 25%),
-    radial-gradient(circle at bottom left, rgba(236,72,153,.15), transparent 25%),
-    var(--bg);
-
-    color:var(--text);
-    overflow-x:hidden;
-    min-height:100vh;
+/* MUSIC BUTTON */
+#music-btn {
+  position: fixed; bottom: 28px; right: 28px; z-index: 998;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--card); border: 0.5px solid var(--border2);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-size: 20px; transition: transform .2s, background .2s;
+  box-shadow: 0 4px 24px rgba(0,0,0,.4);
 }
+#music-btn:hover { transform: scale(1.1); background: var(--surface); }
+#music-btn.playing { border-color: var(--gold); }
+#music-note { transition: opacity .3s; }
 
 /* HERO */
-
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:40px 20px;
-    position:relative;
+.hero {
+  min-height: 100svh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 60px 24px 100px;
+  position: relative; overflow: hidden;
 }
+.hero-glow { position: absolute; width: 600px; height: 600px; border-radius: 50%; pointer-events: none; }
+.glow-gold { background: radial-gradient(circle,rgba(201,168,108,.18) 0%,transparent 70%); top:-100px; left:50%; transform:translateX(-50%); }
+.glow-rose { background: radial-gradient(circle,rgba(196,121,138,.14) 0%,transparent 70%); bottom:-150px; right:-100px; }
 
-.hero::before{
-    content:'';
-    position:absolute;
-    width:500px;
-    height:500px;
-    background:linear-gradient(135deg,var(--primary),var(--secondary));
-    filter:blur(140px);
-    opacity:.2;
-    z-index:0;
-}
+.hero-eyebrow { font-size:11px; font-weight:400; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:28px; opacity:0; animation:fadeUp .9s .2s forwards; }
+.hero-title { font-family:var(--serif); font-size:clamp(3.2rem,8vw,7rem); font-weight:300; line-height:1.05; color:var(--cream); margin-bottom:20px; opacity:0; animation:fadeUp .9s .4s forwards; }
+.hero-title em { font-style:italic; color:var(--gold2); }
+.hero-subtitle { font-size:15px; font-weight:300; color:var(--muted); max-width:480px; line-height:1.85; margin:0 auto 36px; opacity:0; animation:fadeUp .9s .6s forwards; }
 
-.hero-content{
-    position:relative;
-    z-index:1;
-    max-width:900px;
+/* OPUESTOS BADGE */
+.opposites {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 44px;
+  opacity: 0; animation: fadeUp .9s .75s forwards;
 }
+.opp-pill {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  background: var(--card); border: 0.5px solid var(--border); border-radius: 12px;
+  padding: 10px 18px;
+}
+.opp-sign { font-family: var(--serif); font-size: 1.4rem; line-height: 1; }
+.opp-name { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.opp-sep { font-family: var(--serif); font-size: 1.6rem; color: var(--gold); opacity: .5; }
 
-.badge{
-    display:inline-block;
-    padding:10px 20px;
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:999px;
-    background:rgba(255,255,255,.04);
-    margin-bottom:25px;
-    color:#ddd;
-    backdrop-filter:blur(10px);
-}
+/* COUNTER */
+.counter-wrap { display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin-bottom:64px; opacity:0; animation:fadeUp .9s .9s forwards; }
+.counter-item { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.counter-num { font-family:var(--serif); font-size:2.6rem; font-weight:300; color:var(--gold2); line-height:1; min-width:58px; text-align:center; }
+.counter-label { font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+.counter-sep { font-family:var(--serif); font-size:2rem; color:var(--border2); align-self:flex-end; padding-bottom:4px; }
+.counter-since { font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); opacity:.7; text-align:center; margin-top:-50px; margin-bottom:64px; opacity:0; animation:fadeUp .9s 1s forwards; }
 
-.hero h1{
-    font-size:clamp(3rem,7vw,6rem);
-    line-height:1;
-    margin-bottom:20px;
-    background:linear-gradient(to right,#fff,#d8b4fe,#f9a8d4);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
+.scroll-hint { position:absolute; bottom:36px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; opacity:0; animation:fadeUp .9s 1.3s forwards; }
+.scroll-line { width:1px; height:40px; background:linear-gradient(to bottom,var(--gold),transparent); animation:scrollPulse 2s ease-in-out infinite; }
+.scroll-text { font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
 
-.hero p{
-    color:var(--soft);
-    font-size:1.1rem;
-    line-height:1.8;
-    max-width:750px;
-    margin:auto;
-}
+/* BRIDGE */
+.bridge-section { width:100%; max-width:900px; margin:0 auto; padding:20px 24px 80px; display:flex; flex-direction:column; align-items:center; gap:20px; }
+.bridge-label { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); text-align:center; }
+#bridge-svg { width:100%; max-width:700px; }
+#bridge-path { stroke-dasharray:1200; stroke-dashoffset:1200; transition:stroke-dashoffset 2s ease; }
+#bridge-path.drawn { stroke-dashoffset:0; }
+.bridge-caption { font-family:var(--serif); font-size:1.1rem; font-style:italic; color:var(--muted); text-align:center; max-width:500px; line-height:1.7; }
 
-.scroll{
-    margin-top:50px;
-    color:#aaa;
-    animation:float 2s infinite ease-in-out;
-}
-
-@keyframes float{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(10px);}
-}
+/* SECTION HEADER */
+.section-header { text-align:center; padding:80px 24px 60px; max-width:600px; margin:0 auto; }
+.section-tag { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+.section-title { font-family:var(--serif); font-size:clamp(2rem,5vw,3.2rem); font-weight:300; color:var(--cream); line-height:1.2; }
+.section-title em { font-style:italic; color:var(--gold2); }
 
 /* TIMELINE */
+.timeline { width:min(900px,92%); margin:0 auto; padding-bottom:100px; position:relative; }
+.tl-spine { position:absolute; left:50%; top:0; bottom:0; width:1px; transform:translateX(-50%); background:linear-gradient(to bottom,transparent,var(--gold) 10%,var(--rose) 90%,transparent); opacity:.25; }
 
-.timeline-section{
-    width:min(1100px,90%);
-    margin:auto;
-    padding:80px 0 120px;
-    position:relative;
-}
+.tl-item { display:grid; grid-template-columns:1fr 56px 1fr; align-items:start; margin-bottom:56px; opacity:0; transform:translateY(32px); transition:opacity .7s ease,transform .7s ease; }
+.tl-item.visible { opacity:1; transform:translateY(0); }
+.tl-left { padding-right:28px; }
+.tl-right { padding-left:28px; }
+.tl-center { display:flex; flex-direction:column; align-items:center; padding-top:20px; gap:6px; }
+.tl-dot { width:14px; height:14px; border-radius:50%; border:2px solid var(--gold); background:var(--bg); box-shadow:0 0 12px rgba(201,168,108,.4); flex-shrink:0; }
+.tl-dot.rose { border-color:var(--rose); box-shadow:0 0 12px rgba(196,121,138,.4); }
+.tl-dot.violet { border-color:var(--violet2); box-shadow:0 0 12px rgba(139,123,181,.4); }
+.tl-dot.filled { background:var(--gold); width:18px; height:18px; box-shadow:0 0 20px rgba(201,168,108,.7); }
+.tl-dot.filled-rose { background:var(--rose); width:18px; height:18px; border-color:var(--rose); box-shadow:0 0 20px rgba(196,121,138,.7); }
 
-.timeline-line{
-    position:absolute;
-    left:50%;
-    top:0;
-    transform:translateX(-50%);
-    width:4px;
-    height:100%;
-    background:linear-gradient(to bottom,var(--primary),var(--secondary));
-    border-radius:999px;
-    opacity:.35;
-}
+.tl-item:nth-child(odd) .tl-left  { order:1; }
+.tl-item:nth-child(odd) .tl-center{ order:2; }
+.tl-item:nth-child(odd) .tl-right { order:3; }
+.tl-item:nth-child(even) .tl-left { order:3; }
+.tl-item:nth-child(even) .tl-center{ order:2; }
+.tl-item:nth-child(even) .tl-right { order:1; }
 
-.timeline-item{
-    position:relative;
-    width:50%;
-    padding:30px;
-    margin-bottom:60px;
-}
+.tl-card { background:var(--card); border:0.5px solid var(--border); border-radius:16px; padding:22px 24px; transition:border-color .3s,transform .3s; }
+.tl-card:hover { border-color:var(--border2); transform:translateY(-4px); }
+.tl-era { font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; font-weight:400; }
+.tl-era.rose { color:var(--rose); }
+.tl-era.violet { color:var(--violet2); }
+.tl-card h3 { font-family:var(--serif); font-size:1.35rem; font-weight:400; color:var(--cream); line-height:1.25; margin-bottom:10px; }
+.tl-card p { font-size:13px; font-weight:300; color:var(--muted); line-height:1.75; }
+.tl-tag { display:inline-block; font-size:10px; letter-spacing:.1em; padding:3px 10px; border-radius:999px; margin-top:12px; font-weight:400; }
+.tl-tag.gold { background:rgba(201,168,108,.1); color:var(--gold); border:0.5px solid rgba(201,168,108,.2); }
+.tl-tag.rose { background:rgba(196,121,138,.1); color:var(--rose); border:0.5px solid rgba(196,121,138,.2); }
 
-.timeline-item:nth-child(odd){
-    left:0;
-    text-align:right;
-}
+/* OPPOSITES SECTION */
+.opp-section { width:min(860px,92%); margin:0 auto 90px; }
+.opp-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; border-radius:20px; overflow:hidden; border:0.5px solid var(--border); }
+.opp-col { background:var(--card); padding:36px 32px; }
+.opp-col.right { background:var(--surface); }
+.opp-col-header { display:flex; align-items:center; gap:12px; margin-bottom:28px; }
+.opp-avatar { width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:1.3rem; }
+.opp-avatar.m { background:rgba(201,168,108,.12); color:var(--gold2); border:0.5px solid rgba(201,168,108,.2); }
+.opp-avatar.s { background:rgba(196,121,138,.12); color:var(--rose2); border:0.5px solid rgba(196,121,138,.2); }
+.opp-person { font-family:var(--serif); font-size:1.15rem; color:var(--cream); }
+.opp-sign2 { font-size:11px; color:var(--muted); letter-spacing:.08em; }
+.opp-trait { display:flex; align-items:flex-start; gap:10px; margin-bottom:14px; }
+.opp-dot2 { width:4px; height:4px; border-radius:50%; margin-top:7px; flex-shrink:0; }
+.opp-dot2.gold { background:var(--gold); }
+.opp-dot2.rose { background:var(--rose); }
+.opp-trait p { font-size:13px; color:var(--muted); line-height:1.6; font-weight:300; }
+.opp-trait strong { color:var(--text); font-weight:500; }
+.opp-connector { display:flex; align-items:center; justify-content:center; padding:40px 0; background:var(--card); border-left:0.5px solid var(--border); border-right:0.5px solid var(--border); }
+.opp-connector-inner { display:flex; flex-direction:column; align-items:center; gap:8px; }
+.opp-vs { font-family:var(--serif); font-size:2.2rem; font-weight:300; color:var(--gold); opacity:.5; }
+.opp-but { font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
 
-.timeline-item:nth-child(even){
-    left:50%;
-}
-
-.timeline-card{
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(18px);
-    border-radius:24px;
-    padding:28px;
-    transition:.4s ease;
-    position:relative;
-}
-
-.timeline-card:hover{
-    transform:translateY(-8px);
-    border-color:rgba(255,255,255,.18);
-}
-
-.timeline-dot{
-    width:22px;
-    height:22px;
-    border-radius:50%;
-    background:linear-gradient(135deg,var(--primary),var(--secondary));
-    position:absolute;
-    top:40px;
-    z-index:2;
-    box-shadow:0 0 25px rgba(168,85,247,.7);
-}
-
-.timeline-item:nth-child(odd) .timeline-dot{
-    right:-11px;
-}
-
-.timeline-item:nth-child(even) .timeline-dot{
-    left:-11px;
-}
-
-.timeline-date{
-    color:#d8b4fe;
-    font-size:.9rem;
-    margin-bottom:10px;
-    font-weight:600;
-    letter-spacing:1px;
-}
-
-.timeline-card h2{
-    margin-bottom:15px;
-    font-size:1.5rem;
-}
-
-.timeline-card p{
-    color:var(--soft);
-    line-height:1.8;
-}
+/* FEELINGS */
+.feelings-section { width:min(860px,92%); margin:0 auto 100px; }
+.feelings-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.feeling-card { background:var(--card); border:0.5px solid var(--border); border-radius:16px; overflow:hidden; cursor:pointer; transition:border-color .3s; }
+.feeling-card:hover { border-color:var(--border2); }
+.feeling-head { display:flex; align-items:center; justify-content:space-between; padding:20px 22px; }
+.feeling-name { font-family:var(--serif); font-size:1.2rem; font-weight:400; color:var(--cream); }
+.feeling-icon { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; flex-shrink:0; transition:transform .3s; }
+.feeling-card.m .feeling-icon { background:rgba(201,168,108,.15); color:var(--gold); }
+.feeling-card.s .feeling-icon { background:rgba(196,121,138,.15); color:var(--rose); }
+.feeling-card.open .feeling-icon { transform:rotate(45deg); }
+.feeling-body { max-height:0; overflow:hidden; transition:max-height .5s ease,padding .3s ease; padding:0 22px; }
+.feeling-card.open .feeling-body { max-height:300px; padding-bottom:20px; }
+.feeling-body p { font-size:13px; font-weight:300; color:var(--muted); line-height:1.8; font-family:var(--serif); font-style:italic; }
 
 /* FINAL */
+.final { width:min(720px,92%); margin:0 auto 120px; text-align:center; padding:80px 0; position:relative; }
+.final::before { content:'\201C'; font-family:var(--serif); font-size:14rem; line-height:.6; color:var(--gold); opacity:.07; position:absolute; top:40px; left:50%; transform:translateX(-50%); pointer-events:none; user-select:none; }
+.final-quote { font-family:var(--serif); font-size:clamp(1.5rem,3.5vw,2.4rem); font-weight:300; font-style:italic; color:var(--cream); line-height:1.5; margin-bottom:32px; }
+.final-attr { font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); }
 
-.final{
-    width:min(900px,90%);
-    margin:0 auto 120px;
-    text-align:center;
+footer { text-align:center; padding:40px 24px 60px; border-top:0.5px solid var(--border); font-size:12px; color:var(--muted); letter-spacing:.08em; }
+footer a { color:var(--gold); text-decoration:none; }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes scrollPulse { 0%,100%{opacity:.4} 50%{opacity:1} }
+@keyframes spin { to{transform:rotate(360deg)} }
+.spinning { animation:spin 3s linear infinite; }
+
+@media(max-width:640px){
+  .tl-spine{left:20px}
+  .tl-item{grid-template-columns:40px 1fr;margin-bottom:36px}
+  .tl-item:nth-child(odd) .tl-left,
+  .tl-item:nth-child(even) .tl-left{display:none;order:3}
+  .tl-item:nth-child(odd) .tl-center,
+  .tl-item:nth-child(even) .tl-center{order:1}
+  .tl-item:nth-child(odd) .tl-right,
+  .tl-item:nth-child(even) .tl-right{order:2;padding-left:16px;padding-right:0}
+  .feelings-grid,.opp-grid{grid-template-columns:1fr}
+  .opp-connector{display:none}
+  .counter-wrap{gap:12px}
+  .counter-num{font-size:2rem}
 }
-
-.final-card{
-    background:linear-gradient(135deg,
-    rgba(168,85,247,.12),
-    rgba(236,72,153,.12));
-
-    border:1px solid rgba(255,255,255,.08);
-    padding:60px 40px;
-    border-radius:30px;
-    position:relative;
-    overflow:hidden;
-}
-
-.final-card::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:
-    radial-gradient(circle at top right, rgba(255,255,255,.08), transparent 30%);
-    pointer-events:none;
-}
-
-.final h2{
-    font-size:clamp(2rem,5vw,3.5rem);
-    margin-bottom:25px;
-}
-
-.final p{
-    line-height:2;
-    color:#d7d7e5;
-    font-size:1.05rem;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-    .timeline-line{
-        left:20px;
-    }
-
-    .timeline-item{
-        width:100%;
-        left:0 !important;
-        text-align:left !important;
-        padding-left:60px;
-    }
-
-    .timeline-dot{
-        left:9px !important;
-        right:auto !important;
-    }
-
-}
-
 </style>
 </head>
-
 <body>
 
+<div id="progress"></div>
+
+<!-- MUSIC -->
+<button id="music-btn" title="Reproducir Perfect — Andrea Bocelli & Ed Sheeran" onclick="toggleMusic()">
+  <span id="music-note">♪</span>
+</button>
+<audio id="bg-music" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ═══ HERO ═══ -->
 <section class="hero">
+  <div class="hero-glow glow-gold"></div>
+  <div class="hero-glow glow-rose"></div>
 
-    <div class="hero-content">
+  <p class="hero-eyebrow">Una historia de quince años · Leo &amp; Sagitario</p>
 
-        <div class="badge">
-            ✨ Manuel & Sugey — Una historia construida entre transiciones
-        </div>
+  <h1 class="hero-title">Manuel<br><em>&amp; Sugey</em></h1>
 
-        <h1>
-            El puente que sí llegó a construirse
-        </h1>
+  <p class="hero-subtitle">
+    Un programador apasionado por la ópera.<br>
+    Una repostera que vive en lo urbano.<br>
+    Completamente opuestos.<br>
+    <em style="font-family:var(--serif);font-style:italic;color:var(--gold2);font-size:1.05em;">Completamente hechos el uno para el otro.</em>
+  </p>
 
-        <p>
-            Algunas historias comienzan mucho antes de tener nombre.
-            Entre sueños, incertidumbre, despedidas, reconciliaciones y esperanza,
-            dos personas fueron encontrándose poco a poco hasta convertirse en hogar.
-        </p>
-
-        <div class="scroll">
-            ↓ Desliza para recorrer la historia ↓
-        </div>
-
+  <div class="opposites">
+    <div class="opp-pill">
+      <span class="opp-sign" style="color:var(--gold2);">♌</span>
+      <span class="opp-name">Manuel · Leo</span>
     </div>
+    <span class="opp-sep">∞</span>
+    <div class="opp-pill">
+      <span class="opp-sign" style="color:var(--rose2);">♐</span>
+      <span class="opp-name">Sugey · Sagitario</span>
+    </div>
+  </div>
+
+  <div class="counter-wrap" id="counter">
+    <div class="counter-item"><span class="counter-num" id="c-years">0</span><span class="counter-label">años</span></div>
+    <span class="counter-sep">·</span>
+    <div class="counter-item"><span class="counter-num" id="c-months">0</span><span class="counter-label">meses</span></div>
+    <span class="counter-sep">·</span>
+    <div class="counter-item"><span class="counter-num" id="c-days">0</span><span class="counter-label">días</span></div>
+    <span class="counter-sep">·</span>
+    <div class="counter-item"><span class="counter-num" id="c-hours">00</span><span class="counter-label">horas</span></div>
+    <span class="counter-sep">·</span>
+    <div class="counter-item"><span class="counter-num" id="c-mins">00</span><span class="counter-label">min</span></div>
+    <span class="counter-sep">·</span>
+    <div class="counter-item"><span class="counter-num" id="c-secs">00</span><span class="counter-label">seg</span></div>
+  </div>
+  <p class="counter-since">desde el primer encuentro · 27 de mayo, 2025</p>
+
+  <div class="scroll-hint">
+    <span class="scroll-text">Desplaza</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══ BRIDGE ═══ -->
+<div class="bridge-section">
+  <p class="bridge-label">El puente que sí se construyó</p>
+  <svg id="bridge-svg" viewBox="0 0 700 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 130 Q175 115 350 130 Q525 145 700 130" stroke="rgba(139,123,181,.2)" stroke-width="1" fill="none"/>
+    <path d="M0 140 Q175 128 350 140 Q525 152 700 140" stroke="rgba(139,123,181,.12)" stroke-width="1" fill="none"/>
+    <rect x="0" y="120" width="80" height="40" rx="4" fill="#1b1826"/>
+    <rect x="70" y="108" width="24" height="52" rx="4" fill="#c9a86c" opacity=".18"/>
+    <rect x="620" y="120" width="80" height="40" rx="4" fill="#1b1826"/>
+    <rect x="606" y="108" width="24" height="52" rx="4" fill="#c9a86c" opacity=".18"/>
+    <path id="bridge-path" d="M70 120 Q100 60 180 50 Q280 36 350 40 Q420 36 520 50 Q600 60 630 120" stroke="url(#bridgeGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <line x1="350" y1="40" x2="250" y2="120" stroke="rgba(201,168,108,.25)" stroke-width="1"/>
+    <line x1="350" y1="40" x2="310" y2="120" stroke="rgba(201,168,108,.2)" stroke-width="1"/>
+    <line x1="350" y1="40" x2="390" y2="120" stroke="rgba(201,168,108,.2)" stroke-width="1"/>
+    <line x1="350" y1="40" x2="450" y2="120" stroke="rgba(201,168,108,.25)" stroke-width="1"/>
+    <rect x="343" y="22" width="14" height="20" rx="2" fill="#c9a86c" opacity=".35"/>
+    <defs>
+      <linearGradient id="bridgeGrad" x1="70" y1="0" x2="630" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#8b7bb5"/>
+        <stop offset="50%" stop-color="#c9a86c"/>
+        <stop offset="100%" stop-color="#c4798a"/>
+      </linearGradient>
+    </defs>
+  </svg>
+  <p class="bridge-caption">
+    "Algunas historias no comienzan cuando se hacen oficiales.<br>
+    Comienzan cuando dos personas empiezan a convertirse en paz para el otro."
+  </p>
+</div>
+
+<!-- ═══ TIMELINE ═══ -->
+<div class="section-header">
+  <p class="section-tag">Nuestra historia</p>
+  <h2 class="section-title">Quince años,<br><em>un solo hilo</em></h2>
+</div>
+
+<section class="timeline">
+  <div class="tl-spine"></div>
+
+  <!-- 1 -->
+  <div class="tl-item">
+    <div class="tl-left">
+      <div class="tl-card">
+        <p class="tl-era">2011 · Maracaibo</p>
+        <h3>La iglesia</h3>
+        <p>Manuel tiene 17 años, Sugey tiene 7. Se conocen en la iglesia. Hay algo en ella — alegría desbordante, luz propia — que queda grabado sin que nadie lo nombre. Él la cuida como se cuida a una hermana menor. Un amor completamente limpio, fraternal, sin ninguna otra intención.</p>
+        <span class="tl-tag gold">El primer capítulo</span>
+      </div>
+    </div>
+    <div class="tl-center"><div class="tl-dot"></div></div>
+    <div class="tl-right"></div>
+  </div>
+
+  <!-- 2 -->
+  <div class="tl-item">
+    <div class="tl-left"></div>
+    <div class="tl-center"><div class="tl-dot rose"></div></div>
+    <div class="tl-right">
+      <div class="tl-card">
+        <p class="tl-era rose">2011 – 2023 · El silencio</p>
+        <h3>Doce años sin verse</h3>
+        <p>La vida los lleva por caminos distintos. Cada uno crece, cambia, construye. Ninguno lo sabe todavía, pero el tiempo no borra algunos rostros. A veces así funciona lo que está destinado: en silencio, sin apresurarse.</p>
+        <span class="tl-tag rose">El tiempo trabajando</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="tl-item">
+    <div class="tl-left">
+      <div class="tl-card">
+        <p class="tl-era">2023 · Facebook</p>
+        <h3>El primer coqueteo</h3>
+        <p>Una solicitud de amistad. Un mensaje. Y el impacto silencioso de darse cuenta: la niña de la iglesia ya no es una niña. Hay conversaciones largas, risas, algo que empieza a parecerse a la atracción. Pero el contexto pesa — la iglesia, las formas, las reglas no escritas — y optan por distanciarse. Se bloquean. No porque no haya algo, sino porque lo hay demasiado.</p>
+        <span class="tl-tag gold">Chispa, y miedo</span>
+      </div>
+    </div>
+    <div class="tl-center"><div class="tl-dot"></div></div>
+    <div class="tl-right"></div>
+  </div>
+
+  <!-- 4 -->
+  <div class="tl-item">
+    <div class="tl-left"></div>
+    <div class="tl-center"><div class="tl-dot rose"></div></div>
+    <div class="tl-right">
+      <div class="tl-card">
+        <p class="tl-era rose">Enero 2025 · El desbloqueo</p>
+        <h3>Ella da el primer paso</h3>
+        <p>Sugey lo desbloquea. Así de simple, así de cargado. Eso no fue un accidente — fue una decisión. Las conversaciones regresan, más maduras, más directas, con menos disfraces. El coqueteo se vuelve algo más serio. Ambos saben hacia dónde va esto, aunque nadie lo diga todavía en voz alta.</p>
+        <span class="tl-tag rose">El primer paso valiente</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="tl-item">
+    <div class="tl-left">
+      <div class="tl-card">
+        <p class="tl-era">27 de mayo, 2025</p>
+        <h3>El encuentro que lo cambió todo</h3>
+        <p>Por primera vez en catorce años, están en el mismo lugar al mismo tiempo. Lo que habían construido en conversaciones y mensajes se convierte en algo real, tangible, innegable. No fue el inicio del amor — eso llevaba meses creciendo. Fue el momento en que ambos supieron, sin dudas, que esto era verdad.</p>
+        <span class="tl-tag gold">Desde aquí corre el contador</span>
+      </div>
+    </div>
+    <div class="tl-center"><div class="tl-dot filled"></div></div>
+    <div class="tl-right"></div>
+  </div>
+
+  <!-- 6 -->
+  <div class="tl-item">
+    <div class="tl-left"></div>
+    <div class="tl-center"><div class="tl-dot rose"></div></div>
+    <div class="tl-right">
+      <div class="tl-card">
+        <p class="tl-era rose">Octubre 2025 · El cambio</p>
+        <h3>Algo en él se acomodó</h3>
+        <p>Hubo un momento en el que algo interno en Manuel terminó de acomodarse. Sin anunciarlo, sin drama, el tono cambió. Las conversaciones con Sugey se volvieron más profundas, más íntimas, más honestas. Sin título todavía, pero con todo el peso de una historia real. Un trato de novios que aún no tenía nombre.</p>
+        <span class="tl-tag rose">El giro silencioso</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="tl-item">
+    <div class="tl-left">
+      <div class="tl-card">
+        <p class="tl-era">Semana del 20 de marzo, 2026</p>
+        <h3>La confesión</h3>
+        <p>Manuel le confiesa a Sugey lo que ya ambos sabían: que lo que hay entre ellos es real y merece un nombre. Hubo tensión, preguntas, el peso de lo no dicho. Y luego, esa semana que lo cambió todo: una entrevista importante, y al salir, la reconciliación. Como si el universo alineara las dos cosas al mismo tiempo.</p>
+        <span class="tl-tag gold">La verdad dicha en voz alta</span>
+      </div>
+    </div>
+    <div class="tl-center"><div class="tl-dot violet"></div></div>
+    <div class="tl-right"></div>
+  </div>
+
+  <!-- 8 -->
+  <div class="tl-item">
+    <div class="tl-left"></div>
+    <div class="tl-center"><div class="tl-dot filled"></div></div>
+    <div class="tl-right">
+      <div class="tl-card">
+        <p class="tl-era violet">20 de marzo, 2026</p>
+        <h3>Oficialmente novios</h3>
+        <p>Lo que llevaba meses creciendo finalmente recibió un nombre. No fue el inicio del amor — ese ya existía. Fue el momento donde ambos decidieron reconocerlo sin condiciones, sin rodeos, ante ellos mismos y ante el mundo.</p>
+        <span class="tl-tag gold">El nombre que ya merecía</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="tl-item">
+    <div class="tl-left">
+      <div class="tl-card">
+        <p class="tl-era">Día de las Madres, 2026</p>
+        <h3>Ya no era solo una historia privada</h3>
+        <p>Manuel presentó a Sugey con su padre la semana anterior. El Día de las Madres, la presentó con toda la familia. La relación dejó de ser un secreto entre dos y se convirtió en algo que el mundo también podía ver y celebrar.</p>
+        <span class="tl-tag rose">El mundo se entera</span>
+      </div>
+    </div>
+    <div class="tl-center"><div class="tl-dot violet"></div></div>
+    <div class="tl-right"></div>
+  </div>
+
+  <!-- 10 -->
+  <div class="tl-item">
+    <div class="tl-left"></div>
+    <div class="tl-center"><div class="tl-dot filled-rose"></div></div>
+    <div class="tl-right">
+      <div class="tl-card">
+        <p class="tl-era violet">Hoy · 2026</p>
+        <h3>El puente sí se construyó</h3>
+        <p>Quince años después de aquel primer encuentro en la iglesia, dos personas que la vida separó y volvió a juntar están construyendo algo real: paz, complicidad y un amor que pasó por fuego y eligió quedarse.</p>
+        <span class="tl-tag rose">Capítulo en curso</span>
+      </div>
+    </div>
+  </div>
 
 </section>
 
-<section class="timeline-section">
+<!-- ═══ OPUESTOS ═══ -->
+<div class="section-header">
+  <p class="section-tag">La paradoja perfecta</p>
+  <h2 class="section-title">Completamente <em>opuestos</em></h2>
+</div>
 
-    <div class="timeline-line"></div>
-
-    <!-- ITEM -->
-
-    <div class="timeline-item">
-
-        <div class="timeline-dot"></div>
-
-        <div class="timeline-card">
-
-            <div class="timeline-date">
-                🌙 El primer encuentro
-            </div>
-
-            <h2>
-                Cuando algo empezó a cambiar
-            </h2>
-
-            <p>
-                Lo que parecía una conexión sencilla comenzó a convertirse en algo más profundo.
-                Aún no había certezas, ni títulos, ni promesas...
-                pero emocionalmente, ambos empezaban a reconocerse.
-            </p>
-
+<section class="opp-section">
+  <div class="opp-grid">
+    <div class="opp-col">
+      <div class="opp-col-header">
+        <div class="opp-avatar m">♌</div>
+        <div>
+          <p class="opp-person">Manuel</p>
+          <p class="opp-sign2">Leo · 32 años · Programador</p>
         </div>
-
+      </div>
+      <div class="opp-trait"><div class="opp-dot2 gold"></div><p><strong>Andrea Bocelli en loop.</strong> La ópera como fondo de trabajo, como estado del alma. Le dedicó <em>Perfect</em> a Sugey.</p></div>
+      <div class="opp-trait"><div class="opp-dot2 gold"></div><p><strong>Intenso y pasional.</strong> El tipo de persona que cuando ama, ama con todo. Leo hasta los huesos.</p></div>
+      <div class="opp-trait"><div class="opp-dot2 gold"></div><p><strong>Vive en el código.</strong> Laravel, Livewire, arquitectura, proyectos. El trabajo es vocación, no rutina.</p></div>
+      <div class="opp-trait"><div class="opp-dot2 gold"></div><p><strong>La comida como experiencia.</strong> Le importa cómo se come, con quién, con qué música de fondo.</p></div>
     </div>
 
-    <!-- ITEM -->
-
-    <div class="timeline-item">
-
-        <div class="timeline-dot"></div>
-
-        <div class="timeline-card">
-
-            <div class="timeline-date">
-                🌉 La transición
-            </div>
-
-            <h2>
-                El puente más difícil
-            </h2>
-
-            <p>
-                Manuel aún estaba cerrando una etapa importante de su vida.
-                No quería comenzar algo nuevo sin antes resolver lo anterior con responsabilidad.
-                Eso causó dolor, dudas y casi los separa...
-                pero también mostró que las decisiones se estaban tomando con verdad.
-            </p>
-
+    <div class="opp-col right">
+      <div class="opp-col-header">
+        <div class="opp-avatar s">♐</div>
+        <div>
+          <p class="opp-person">Sugey</p>
+          <p class="opp-sign2">Sagitario · 22 años · Repostera</p>
         </div>
-
+      </div>
+      <div class="opp-trait"><div class="opp-dot2 rose"></div><p><strong>Lo urbano, lo cotidiano.</strong> La música que suena en la calle, lo que vibra en el presente.</p></div>
+      <div class="opp-trait"><div class="opp-dot2 rose"></div><p><strong>Reservada y profunda.</strong> No lo dice todo, pero cuando lo dice, es exactamente lo que era necesario escuchar.</p></div>
+      <div class="opp-trait"><div class="opp-dot2 rose"></div><p><strong>Crea con las manos.</strong> La repostería como arte, como cariño hecho forma y sabor.</p></div>
+      <div class="opp-trait"><div class="opp-dot2 rose"></div><p><strong>Aprendiendo diseño.</strong> Para tener más en común con él. Eso no es adaptación — eso es amor en acción.</p></div>
     </div>
-
-    <!-- ITEM -->
-
-    <div class="timeline-item">
-
-        <div class="timeline-dot"></div>
-
-        <div class="timeline-card">
-
-            <div class="timeline-date">
-                🌧️ Los meses difíciles
-            </div>
-
-            <h2>
-                Insomnio, presión y miedo
-            </h2>
-
-            <p>
-                Llegaron días complicados:
-                desempleo, deudas, ansiedad y una sensación constante de cansancio.
-                Manuel cargaba demasiado solo,
-                mientras Sugey intentaba sostener el vínculo desde el cariño.
-                Aun así, ninguno dejó de elegir al otro.
-            </p>
-
-        </div>
-
-    </div>
-
-    <!-- ITEM -->
-
-    <div class="timeline-item">
-
-        <div class="timeline-dot"></div>
-
-        <div class="timeline-card">
-
-            <div class="timeline-date">
-                ☀️ El día de la reconciliación
-            </div>
-
-            <h2>
-                La entrevista que cambió todo
-            </h2>
-
-            <p>
-                Después de una de las entrevistas más importantes,
-                algo también cambió emocionalmente.
-                Hablaron, se reencontraron y decidieron seguir construyendo juntos.
-                Desde ese momento, la historia tomó una dirección más clara.
-            </p>
-
-        </div>
-
-    </div>
-
-    <!-- ITEM -->
-
-    <div class="timeline-item">
-
-        <div class="timeline-dot"></div>
-
-        <div class="timeline-card">
-
-            <div class="timeline-date">
-                💜 20 de marzo
-            </div>
-
-            <h2>
-                El inicio oficial
-            </h2>
-
-            <p>
-                Lo que llevaba mucho tiempo creciendo finalmente recibió un nombre:
-                novios.
-                No fue el inicio del amor...
-                fue el momento donde ambos decidieron reconocerlo oficialmente.
-            </p>
-
-        </div>
-
-    </div>
-
-    <!-- ITEM -->
-
-    <div class="timeline-item">
-
-        <div class="timeline-dot"></div>
-
-        <div class="timeline-card">
-
-            <div class="timeline-date">
-                🏡 Integrarse a la familia
-            </div>
-
-            <h2>
-                Ya no solo era una historia privada
-            </h2>
-
-            <p>
-                Manuel presentó a Sugey primero a su padre
-                y luego oficialmente con toda la familia el Día de las Madres.
-                Poco a poco, la relación comenzó a sentirse como hogar,
-                no solo como refugio emocional.
-            </p>
-
-        </div>
-
-    </div>
-
-    <!-- ITEM -->
-
-    <div class="timeline-item">
-
-        <div class="timeline-dot"></div>
-
-        <div class="timeline-card">
-
-            <div class="timeline-date">
-                ✨ Hoy
-            </div>
-
-            <h2>
-                El puente sí se construyó
-            </h2>
-
-            <p>
-                Hubo miedo.
-                Hubo dudas.
-                Hubo noches difíciles.
-                Pero también hubo paciencia, honestidad y amor real.
-                Y aunque la historia aún sigue escribiéndose,
-                ahora ambos saben algo importante:
-                ya no están caminando solos.
-            </p>
-
-        </div>
-
-    </div>
-
+  </div>
 </section>
 
+<!-- ═══ SENTIMIENTOS ═══ -->
+<div class="section-header">
+  <p class="section-tag">Lo que no siempre se decía</p>
+  <h2 class="section-title">Lo que <em>sentían</em><br>por dentro</h2>
+</div>
+
+<section class="feelings-section">
+  <div class="feelings-grid">
+    <div class="feeling-card m" onclick="toggleFeeling(this)">
+      <div class="feeling-head">
+        <span class="feeling-name">Manuel sentía…</span>
+        <div class="feeling-icon">+</div>
+      </div>
+      <div class="feeling-body">
+        <p>"Cargaba demasiado solo. El peso del trabajo, los proyectos, la presión constante. Pero había algo en ella — su constancia, su paciencia, su forma de estar a 25 kilómetros de distancia como si no los hubiera — que me hacía creer que valía la pena intentarlo bien."</p>
+      </div>
+    </div>
+    <div class="feeling-card s" onclick="toggleFeeling(this)">
+      <div class="feeling-head">
+        <span class="feeling-name">Sugey sentía…</span>
+        <div class="feeling-icon">+</div>
+      </div>
+      <div class="feeling-body">
+        <p>"Era confuso querer a alguien que todavía no estaba listo del todo. Pero él siempre fue seguridad para mí — desde los siete años en la iglesia. Esa sensación de refugio nunca cambió. Solo cambió de forma."</p>
+      </div>
+    </div>
+    <div class="feeling-card m" onclick="toggleFeeling(this)">
+      <div class="feeling-head">
+        <span class="feeling-name">Lo que casi los rompió</span>
+        <div class="feeling-icon">+</div>
+      </div>
+      <div class="feeling-body">
+        <p>"El coqueteo de 2023 que terminó en bloqueo. La sensación de que quizás era demasiado complicado, que el contexto pesaba más que el sentimiento. Pero ninguno olvidó al otro. Y eso lo dice todo."</p>
+      </div>
+    </div>
+    <div class="feeling-card s" onclick="toggleFeeling(this)">
+      <div class="feeling-head">
+        <span class="feeling-name">Lo que los unió</span>
+        <div class="feeling-icon">+</div>
+      </div>
+      <div class="feeling-body">
+        <p>"La constancia silenciosa. Verse una o dos veces por semana, 25 kilómetros de por medio. No porque fuera fácil, sino porque ninguno se imaginaba no hacerlo. Ese tipo de decisiones pequeñas construyen las historias grandes."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ QUOTE FINAL ═══ -->
 <section class="final">
-
-    <div class="final-card">
-
-        <h2>
-            “Algunas historias no comienzan cuando se hacen oficiales...
-            comienzan cuando dos personas empiezan a convertirse en paz para el otro.”
-        </h2>
-
-        <p>
-            — Manuel & Sugey —
-            <br><br>
-            Celebrando un año desde el primer encuentro.
-        </p>
-
-    </div>
-
+  <p class="final-quote">
+    "Hay amores que no empiezan el día que se nombran.<br>
+    Empiezan el día que alguien decide<br>
+    que la otra persona vale la pena del caos."
+  </p>
+  <p class="final-attr">Manuel &amp; Sugey · Maracaibo, Venezuela · 2026</p>
 </section>
+
+<footer>
+  Hecho con código y con cariño · <a href="https://manuelhm1993.github.io/manuel-y-sugey/">manuelhm1993.github.io/manuel-y-sugey</a>
+</footer>
 
 <script>
-
-const cards = document.querySelectorAll('.timeline-card');
-
-const observer = new IntersectionObserver(entries => {
-
-    entries.forEach(entry => {
-
-        if(entry.isIntersecting){
-
-            entry.target.animate([
-                {
-                    opacity:0,
-                    transform:'translateY(40px)'
-                },
-                {
-                    opacity:1,
-                    transform:'translateY(0)'
-                }
-            ],{
-                duration:800,
-                easing:'ease',
-                fill:'forwards'
-            });
-
-        }
-
-    });
-
-},{
-    threshold:0.2
+/* SCROLL PROGRESS */
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  document.getElementById('progress').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
 });
 
-cards.forEach(card => {
+/* LIVE COUNTER desde 27-may-2025 */
+function updateCounter(){
+  const start=new Date('2025-05-27T00:00:00');
+  const now=new Date();
+  let diff=Math.max(0,now-start);
+  const totalSecs=Math.floor(diff/1000);
+  const totalMins=Math.floor(totalSecs/60);
+  const totalHours=Math.floor(totalMins/60);
+  const totalDays=Math.floor(totalHours/24);
+  const years=Math.floor(totalDays/365.25);
+  const months=Math.floor((totalDays-Math.floor(years*365.25))/30.44);
+  const days=Math.floor(totalDays-Math.floor(years*365.25)-Math.floor(months*30.44));
+  document.getElementById('c-years').textContent=years;
+  document.getElementById('c-months').textContent=months;
+  document.getElementById('c-days').textContent=Math.max(0,days);
+  document.getElementById('c-hours').textContent=String(totalHours%24).padStart(2,'0');
+  document.getElementById('c-mins').textContent=String(totalMins%60).padStart(2,'0');
+  document.getElementById('c-secs').textContent=String(totalSecs%60).padStart(2,'0');
+}
+updateCounter();
+setInterval(updateCounter,1000);
 
-    card.style.opacity = 0;
-    observer.observe(card);
+/* BRIDGE */
+const bObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){document.getElementById('bridge-path').classList.add('drawn');bObs.disconnect();}});
+},{threshold:0.4});
+bObs.observe(document.getElementById('bridge-svg'));
 
-});
+/* TIMELINE */
+const tlObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.12});
+document.querySelectorAll('.tl-item').forEach(el=>tlObs.observe(el));
 
+/* FEELINGS */
+function toggleFeeling(card){card.classList.toggle('open');}
+
+/* MUSIC — reemplaza src con la URL real de Perfect (Bocelli & Ed Sheeran) */
+let musicPlaying=false;
+function toggleMusic(){
+  const audio=document.getElementById('bg-music');
+  const btn=document.getElementById('music-btn');
+  const note=document.getElementById('music-note');
+  if(!musicPlaying){
+    audio.play().catch(()=>{});
+    musicPlaying=true;
+    btn.classList.add('playing');
+    note.classList.add('spinning');
+    btn.title='Pausar música';
+  } else {
+    audio.pause();
+    musicPlaying=false;
+    btn.classList.remove('playing');
+    note.classList.remove('spinning');
+    btn.title='Reproducir Perfect — Andrea Bocelli & Ed Sheeran';
+  }
+}
 </script>
-
 </body>
 </html>
