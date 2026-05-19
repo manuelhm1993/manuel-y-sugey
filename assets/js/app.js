@@ -113,3 +113,69 @@ window.addEventListener("load", () => {
             /* El navegador bloqueó el autoplay, el usuario da click manual */
         });
 });
+
+/* CARTA */
+function toggleCarta() {
+  document.getElementById('carta-overlay').classList.toggle('visible');
+  document.body.style.overflow =
+    document.getElementById('carta-overlay').classList.contains('visible')
+    ? 'hidden' : '';
+}
+
+function cerrarCarta(e) {
+  if (e.target === document.getElementById('carta-overlay')) toggleCarta();
+}
+
+/* ANIVERSARIO DINÁMICO */
+(function() {
+  const hoy    = new Date();
+  const dia    = hoy.getDate();
+  const mes    = hoy.getMonth(); // 4 = mayo
+  const inicio = new Date('2025-05-27');
+  const years  = Math.floor((hoy - inicio) / (1000 * 60 * 60 * 24 * 365.25));
+
+  if (dia === 27 && mes === 4) {
+    const overlay = document.getElementById('aniversario-overlay');
+    const sub     = document.getElementById('aniversario-sub');
+    const yearsEl = document.getElementById('aniversario-years');
+
+    // Texto dinámico según cuántos años
+    const textos = {
+      0: 'Hace exactamente un año todo cambió.\nHoy celebramos el primer aniversario de lo que se convirtió en hogar.',
+      1: 'Un año de elegirse. Un año de construir.\nFeliz primer aniversario.',
+      2: 'Dos años juntos. Cada uno valió la pena.',
+      3: 'Tres años. Y todavía contando.',
+    };
+    sub.textContent = textos[years] || `${years} años juntos. Y todavía contando.`;
+    yearsEl.textContent = years > 0 ? years : '♡';
+
+    overlay.style.display = 'flex';
+    lanzarConfeti();
+  }
+})();
+
+function cerrarAniversario() {
+  const overlay = document.getElementById('aniversario-overlay');
+  overlay.classList.add('hide');
+  setTimeout(() => overlay.remove(), 900);
+  // Después del aniversario lanza el welcome normal
+  document.getElementById('welcome').style.display = 'flex';
+}
+
+function lanzarConfeti() {
+  const colores = ['#c9a86c','#e8c98a','#c4798a','#e8a0b0','#b8a8e0','#f5ede0'];
+  for (let i = 0; i < 80; i++) {
+    setTimeout(() => {
+      const el = document.createElement('div');
+      el.className = 'confeti-piece';
+      el.style.left            = Math.random() * 100 + 'vw';
+      el.style.background      = colores[Math.floor(Math.random() * colores.length)];
+      el.style.animationDuration = (Math.random() * 2.5 + 1.5) + 's';
+      el.style.animationDelay  = (Math.random() * 1.5) + 's';
+      el.style.width           = (Math.random() * 8 + 5) + 'px';
+      el.style.height          = (Math.random() * 8 + 5) + 'px';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 5000);
+    }, i * 40);
+  }
+}
