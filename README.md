@@ -1,6 +1,8 @@
-# Manuel Henriquez & Sugey Godoy, una historia de amor nada común y electrocutada 💙🩷
+# Manuel Henriquez & Sugey Godoy 💙🩷
 
-Sitio web que narra el recorrido de amor de Sugey y Manuel.
+**Descripción:**
+
+> Sitio web que narra el recorrido de amor de Sugey y Manuel, una historia de amor nada común y electrocutada ⚡🥰.
 
 #### Stack tecnológico 💻
 
