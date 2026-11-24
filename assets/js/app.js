@@ -179,3 +179,15 @@ function lanzarConfeti() {
     }, i * 40);
   }
 }
+
+/* CUMPLEAÑOS: cada 28 de noviembre aparece el acceso al regalo */
+(function () {
+  const hoy = new Date();
+  if (hoy.getDate() === 28 && hoy.getMonth() === 10) { // 10 = noviembre
+    const a = document.createElement('a');
+    a.href = 'cumple.html';
+    a.textContent = '🌻 Hoy es tu cumpleaños, ábrelo';
+    a.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:2500;padding:12px 24px;border-radius:999px;background:#f3c84b;color:#3a2a1e;font-family:var(--sans);text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.4)';
+    document.body.appendChild(a);
+  }
+})();

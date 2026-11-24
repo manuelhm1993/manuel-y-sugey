@@ -1,0 +1,351 @@
+{
+  "nombre": "Sugey",
+  "de": "Manuel",
+  "cumple": {
+    "dia": 28,
+    "mes": 11
+  },
+  "pelicula": [
+    {
+      "id": "escondidas",
+      "cancion": "A escondidas",
+      "artista": "Camilo Sesto",
+      "audio": "assets/cumple/music/escondidas.mp3",
+      "duracion": 37.38,
+      "cortes": [
+        0.0,
+        6.29,
+        12.45,
+        18.67,
+        24.92,
+        31.16
+      ],
+      "frase": "Lo nuestro empezó sin nombre, pero nunca sin verdad.",
+      "fotos": [
+        {
+          "foto": "primera-foto-juntos",
+          "pie": "La primera foto juntos",
+          "modo": "suave"
+        },
+        {
+          "foto": "mismo-sueter",
+          "pie": "El mismo suéter, quince años después",
+          "modo": "suave"
+        },
+        {
+          "foto": "primera-salida",
+          "pie": "Nuestra primera salida",
+          "modo": "suave"
+        },
+        {
+          "foto": "ella-2025-11-28",
+          "pie": "Tu cumpleaños pasado",
+          "modo": "suave"
+        },
+        {
+          "foto": "ella-2026-01-10",
+          "pie": "",
+          "modo": "suave"
+        }
+      ]
+    },
+    {
+      "id": "llegaste",
+      "cancion": "Llegaste tú",
+      "artista": "Luis Fonsi",
+      "audio": "assets/cumple/music/llegaste.mp3",
+      "duracion": 32.0,
+      "cortes": [
+        0.0,
+        4.02,
+        8.01,
+        12.03,
+        16.02,
+        20.02,
+        23.99,
+        28.0
+      ],
+      "frase": "Así se siente la vida desde que llegaste.",
+      "fotos": [
+        {
+          "foto": "2026-04-24-noche",
+          "pie": "",
+          "modo": "suave"
+        },
+        {
+          "foto": "2026-05-10-dia-madres",
+          "pie": "El día que te conoció mi familia",
+          "modo": "suave"
+        },
+        {
+          "foto": "2026-05-31-b",
+          "pie": "",
+          "modo": "suave"
+        },
+        {
+          "foto": "2026-05-31-bebe",
+          "pie": "",
+          "modo": "suave"
+        },
+        {
+          "foto": "2026-07-03-fuente",
+          "pie": "",
+          "modo": "suave"
+        },
+        {
+          "foto": "2026-08-07-girasoles",
+          "pie": "Siempre amarillo",
+          "modo": "suave"
+        },
+        {
+          "foto": "2026-09-16",
+          "pie": "Tú, siendo tú",
+          "modo": "suave"
+        }
+      ]
+    },
+    {
+      "id": "enamorado",
+      "cancion": "Estoy enamorado",
+      "artista": "Thalía y Pedro Capó",
+      "audio": "assets/cumple/music/enamorado.mp3",
+      "duracion": 28.51,
+      "cortes": [
+        0.0,
+        4.69,
+        9.68,
+        14.42,
+        19.11,
+        23.8
+      ],
+      "frase": "La canción que tú me dedicaste.",
+      "fotos": [
+        {
+          "foto": "ella-2026-01-25",
+          "pie": "",
+          "modo": "suave"
+        },
+        {
+          "foto": "ella-2026-04-24",
+          "pie": "",
+          "modo": "suave"
+        },
+        {
+          "foto": "ella-2026-05-15",
+          "pie": "",
+          "modo": "suave"
+        },
+        {
+          "foto": "ella-me-encanta",
+          "pie": "Me encanta",
+          "modo": "suave"
+        },
+        {
+          "foto": "ella-un-ano-despues",
+          "pie": "Luego de un año, qué hermosa",
+          "modo": "suave"
+        }
+      ]
+    },
+    {
+      "id": "perfect",
+      "cancion": "Perfect",
+      "artista": "Ed Sheeran y Andrea Bocelli",
+      "audio": "assets/cumple/music/perfect.mp3",
+      "duracion": 24.82,
+      "cortes": [
+        0.0,
+        4.39,
+        6.64,
+        8.92,
+        11.05,
+        13.28,
+        15.65,
+        20.22
+      ],
+      "frase": "Nuestra canción.",
+      "fotos": [
+        {
+          "foto": "pared-sonrisa",
+          "pie": "",
+          "modo": "cuadro"
+        },
+        {
+          "foto": "pared-mirada-1",
+          "pie": "",
+          "modo": "cuadro"
+        },
+        {
+          "foto": "pared-mirada-2",
+          "pie": "",
+          "modo": "cuadro"
+        },
+        {
+          "foto": "beso-mejilla",
+          "pie": "",
+          "modo": "cuadro"
+        },
+        {
+          "foto": "beso-1",
+          "pie": "",
+          "modo": "cuadro"
+        },
+        {
+          "foto": "beso-2",
+          "pie": "12 de abril de 2026",
+          "modo": "cuadro"
+        },
+        {
+          "foto": "2026-04-12-noche",
+          "pie": "",
+          "modo": "suave"
+        }
+      ]
+    },
+    {
+      "id": "meenamore",
+      "cancion": "Me enamoré de ti",
+      "artista": "Chayanne",
+      "audio": "assets/cumple/music/meenamore.mp3",
+      "duracion": 44.81,
+      "cortes": [
+        0.0,
+        6.41,
+        12.82,
+        19.2,
+        25.61,
+        32.0,
+        38.41
+      ],
+      "frase": "Y lo que viene, lo quiero contigo.",
+      "fotos": [
+        {
+          "foto": "primer-aniversario",
+          "pie": "Nuestro primer aniversario",
+          "modo": "suave"
+        },
+        {
+          "foto": "2026-10-21-a",
+          "pie": "",
+          "modo": "suave"
+        },
+        {
+          "foto": "2026-10-21-b",
+          "pie": "",
+          "modo": "suave"
+        },
+        {
+          "foto": "2026-11-02",
+          "pie": "",
+          "modo": "suave"
+        },
+        {
+          "foto": "2026-05-31-a",
+          "pie": "",
+          "modo": "suave"
+        },
+        {
+          "final": true,
+          "titulo": "Feliz cumpleaños, mi amor",
+          "pie": "28 de noviembre"
+        }
+      ]
+    }
+  ],
+  "sonrisa": {
+    "titulo": "La misma sonrisa",
+    "texto": "Esa sonrisa no ha cambiado desde niña. Hoy, un año más grande, sigue llenando de luz todo lo que toca.",
+    "fotos": [
+      {
+        "foto": "nina-2009",
+        "pie": "2009"
+      },
+      {
+        "foto": "nina-dibujo",
+        "pie": "De pequeña"
+      },
+      {
+        "foto": "ella-2026-01-25",
+        "pie": "Hoy"
+      }
+    ]
+  },
+  "album": [
+    {
+      "anio": 2025,
+      "foto": "primera-foto-juntos",
+      "pie": "La primera foto juntos"
+    },
+    {
+      "anio": 2025,
+      "foto": "primera-salida",
+      "pie": "Primera salida"
+    },
+    {
+      "anio": 2025,
+      "foto": "mismo-sueter",
+      "pie": "El mismo suéter"
+    },
+    {
+      "anio": 2025,
+      "foto": "ella-2025-11-28",
+      "pie": "28 de noviembre, 2025"
+    },
+    {
+      "anio": 2026,
+      "foto": "beso-2",
+      "pie": "12 de abril"
+    },
+    {
+      "anio": 2026,
+      "foto": "2026-04-12-noche",
+      "pie": "Esa misma noche"
+    },
+    {
+      "anio": 2026,
+      "foto": "2026-05-10-dia-madres",
+      "pie": "Día de las Madres"
+    },
+    {
+      "anio": 2026,
+      "foto": "primer-aniversario",
+      "pie": "Primer aniversario"
+    },
+    {
+      "anio": 2026,
+      "foto": "2026-05-31-bebe",
+      "pie": "31 de mayo"
+    },
+    {
+      "anio": 2026,
+      "foto": "2026-07-03-fuente",
+      "pie": "La fuente"
+    },
+    {
+      "anio": 2026,
+      "foto": "2026-08-07-girasoles",
+      "pie": "Girasoles"
+    },
+    {
+      "anio": 2026,
+      "foto": "2026-09-16",
+      "pie": "Tú, siendo tú"
+    },
+    {
+      "anio": 2026,
+      "foto": "2026-10-21-b",
+      "pie": "21 de octubre"
+    },
+    {
+      "anio": 2026,
+      "foto": "2026-11-02",
+      "pie": "2 de noviembre"
+    }
+  ],
+  "mensaje": [
+    "Sugey,",
+    "Hoy no celebro solo tu cumpleaños. Celebro tu risa, tu calma, tus manos que convierten harina en cariño y tu forma de quedarte cuando era más fácil irse.",
+    "Este álbum va a crecer cada año. Lo hice así a propósito: porque pienso seguir llenándolo contigo.",
+    "Feliz cumpleaños, mi amor."
+  ]
+}

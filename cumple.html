@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feliz cumpleaños, Sugey</title>
+    <meta property="og:title" content="Feliz cumpleaños, Sugey" />
+    <meta property="og:description" content="Una película y un álbum que crece cada 28 de noviembre." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌻</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/cumple/css/cumple.css" />
+</head>
+<body>
+    <!-- ═══ INTRO: LA VELA ═══ -->
+    <section id="intro">
+        <p class="eyebrow" id="intro-fecha">28 · 11</p>
+        <h1 class="intro-title">Feliz cumpleaños,<br /><em id="intro-nombre">Sugey</em></h1>
+
+        <div class="cake" aria-hidden="true">
+            <div class="candle">
+                <div class="flame" id="flame"></div>
+                <div class="smoke" id="smoke"></div>
+            </div>
+            <div class="tier tier-top"><span class="drip"></span></div>
+            <div class="tier tier-bottom"><span class="drip"></span></div>
+            <div class="plate"></div>
+        </div>
+
+        <p class="intro-sub">Sube el volumen. Pide un deseo.</p>
+        <button id="blow-btn" class="btn-main">Sopla la vela</button>
+    </section>
+
+    <!-- ═══ PELÍCULA ═══ -->
+    <section id="film" aria-label="Película de cumpleaños">
+        <div class="film-bg" id="film-bg"></div>
+        <div class="film-stage" id="film-stage"></div>
+
+        <div class="film-hud">
+            <div class="film-chapter" id="film-chapter"></div>
+            <div class="film-bars" id="film-bars"></div>
+        </div>
+        <button class="film-skip" id="film-skip">Saltar</button>
+    </section>
+
+    <!-- ═══ PÁGINA ═══ -->
+    <main id="page">
+        <header class="hero">
+            <p class="eyebrow" id="hero-anio">Cumpleaños</p>
+            <h2 class="hero-title">Feliz cumpleaños,<br /><em id="hero-nombre">Sugey</em></h2>
+            <button class="btn-ghost" id="replay-btn">Ver la película otra vez</button>
+        </header>
+
+        <section class="sonrisa">
+            <p class="eyebrow" id="sonrisa-titulo"></p>
+            <div class="sonrisa-fotos" id="sonrisa-fotos"></div>
+            <p class="sonrisa-texto" id="sonrisa-texto"></p>
+        </section>
+
+        <section class="album">
+            <p class="eyebrow">El álbum</p>
+            <h2 class="section-title">Crece cada <em>28 de noviembre</em></h2>
+            <div id="album-years"></div>
+        </section>
+
+        <section class="mensaje">
+            <div class="mensaje-card" id="mensaje"></div>
+        </section>
+
+        <footer>
+            <a href="index.html">Volver a nuestra historia</a>
+        </footer>
+    </main>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" aria-hidden="true">
+        <img id="lightbox-img" alt="" />
+        <p id="lightbox-pie"></p>
+    </div>
+
+    <button id="music-btn" aria-label="Música">♪</button>
+
+    <script src="assets/cumple/js/cumple.js"></script>
+</body>
+</html>
